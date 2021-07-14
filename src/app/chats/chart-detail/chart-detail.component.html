@@ -1,0 +1,41 @@
+<mat-toolbar>
+  <button mat-icon-button (click)="back()" >
+<mat-icon>arrow_back</mat-icon>
+</button><img
+  [src]="chat.sender.profileImage"
+  width="35px"
+  height="35px"
+/><span> &nbsp;&nbsp;{{ chat.sender.name}}</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button >
+  <mat-icon>search</mat-icon>
+</button>
+  <button mat-icon-button>
+  <mat-icon>more_vert</mat-icon>
+</button>
+</mat-toolbar>
+<div class="conatiner">
+  <div style="background-color:grey;border-radius:20px;width:70%;padding-left:10px">
+    <span class="msg-time"> {{chat.date | date:'hh:mm a'}}</span>
+    <span class="msg"> {{chat.content}}</span>
+  </div>
+  <div class="receiver">
+    <div *ngFor="let msg of chatReciever">
+      <span class="msg-time"> {{msg.date | date:'hh:mm a'}}</span>
+      <span class="msg"> {{msg.content}}</span>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="footer">
+  <mat-form-field [formGroup]="msgForm" class="footer-content" appearance="fill">
+    <input matInput #message maxlength="256" placeholder="Enter the Message..." name="msg"formControlName="inputMsg">
+    <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+
+  </mat-form-field>
+  <button mat-icon-button (click)="saveMsg()" style="float: right">
+<mat-icon>send</mat-icon>
+</button>
+</div>

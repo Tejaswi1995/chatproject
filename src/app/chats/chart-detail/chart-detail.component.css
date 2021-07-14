@@ -1,0 +1,21 @@
+mat-hint {
+  font-size: 2px;
+}
+.footer {
+  background-color: whitesmoke;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+.footer-content {
+  width: 100%;
+}
+.receiver {
+  background-color: whitesmoke;
+  border-radius: 20px;
+  width: 70%;
+  padding-left: 10px;
+  float: right;
+  margin-top: 10px;
+}

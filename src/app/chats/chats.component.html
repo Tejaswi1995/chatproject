@@ -1,0 +1,39 @@
+<mat-toolbar>
+  <span>Chats</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button class="example-tab-icon">
+    <mat-icon>search</mat-icon>
+  </button>
+  <button mat-icon-button>
+    <mat-icon>favorite</mat-icon>
+  </button>
+</mat-toolbar>
+<div>
+  <mat-tab-group animationDuration="0ms">
+    <mat-tab label="All">
+      <table>
+        <tbody class="ChatList" *ngIf="chats$ | async as chats">
+          <tr *ngFor="let chat of chats">
+            <td >
+              <a [routerLink]="['/chat',chat.id]"> <img
+                [src]="chat.sender.profileImage"
+                width="40px"
+                height="40px"
+              /></a>
+
+            </td>
+            <td>&nbsp;&nbsp;
+
+          <tr class="chat-sender" [routerLink]="['/chat',chat.id]"> {{chat.sender.name}} 
+            <span class="msg-time"><span [hidden]="chat.read"><mat-icon >done_all</mat-icon></span>{{chat.date | date: 'hh:mm'}} </span>
+          </tr>
+          <tr class="chat-content" [routerLink]="['/chat',chat.id]" [ngStyle]="{'font-weight': chat.read ? 'bold' :'normal'}">{{chat.content}}</tr>
+          </td>
+          </tr>
+        </tbody>
+      </table>
+    </mat-tab>
+    <mat-tab label="Favourites">Content 2</mat-tab>
+  </mat-tab-group>
+</div>
+<router-outlet></router-outlet>
