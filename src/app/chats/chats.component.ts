@@ -10,16 +10,13 @@ import { Sender } from './sender';
   styleUrls: ['./chats.component.css']
 })
 export class ChatsComponent implements OnInit {
-  chats$: Observable<Sender>;
+  chats$: Observable<Sender[]>;
   constructor(
     private dataService: DataService,
     private toolService: DataToolService
   ) {}
 
   ngOnInit() {
-    this.chats$ =
-      this.toolService.getSenderData() == null
-        ? this.dataService.getData()
-        : this.toolService.getSenderData();
+    this.chats$ =this.toolService.getSenderData();
   }
 }

@@ -5,7 +5,7 @@
     <mat-icon>search</mat-icon>
   </button>
   <button mat-icon-button>
-    <mat-icon>favorite</mat-icon>
+    <mat-icon>add</mat-icon>
   </button>
 </mat-toolbar>
 <div>
@@ -14,7 +14,7 @@
       <table>
         <tbody class="ChatList" *ngIf="chats$ | async as chats">
           <tr *ngFor="let chat of chats">
-            <td >
+            <td>
               <a [routerLink]="['/chat',chat.id]"> <img
                 [src]="chat.sender.profileImage"
                 width="40px"
@@ -24,10 +24,12 @@
             </td>
             <td>&nbsp;&nbsp;
 
-          <tr class="chat-sender" [routerLink]="['/chat',chat.id]"> {{chat.sender.name}} 
-            <span class="msg-time"><span [hidden]="chat.read"><mat-icon >done_all</mat-icon></span>{{chat.date | date: 'hh:mm'}} </span>
+          <tr class="chat-sender" [routerLink]="['/chat',chat.id]"> {{chat.sender.name}}
+            <span class="msg-time"><span [hidden]="chat.read"><mat-icon >done_all</mat-icon></span>{{chat.date | date:
+            'hh:mm'}} </span>
           </tr>
-          <tr class="chat-content" [routerLink]="['/chat',chat.id]" [ngStyle]="{'font-weight': chat.read ? 'bold' :'normal'}">{{chat.content}}</tr>
+          <tr class="chat-content" [routerLink]="['/chat',chat.id]"
+            [ngStyle]="{'font-weight': chat.read ? 'bold' :'normal'}">{{chat.content}}</tr>
           </td>
           </tr>
         </tbody>

@@ -50,11 +50,14 @@ export class ChartDetailComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(params => {
       this.id = params.get('id');
-      this.dataService.getDataById(this.id).subscribe(data => {
-        this.chat = data[0];
+      this.toolService
+        .getSenderDataById(this.id)
+        .subscribe(data => (this.chat = data[0]));
+      this.toolService.getReceiverDataById(this.id).subscribe(data => {
+        console.log(data);
+        this.chatReciever = data;
+        console.log(this.chatReciever);
       });
-      this.chatReciever = this.toolService.getReceiverData();
-      this.toolService.SetReceiverData
     });
   }
   back() {
@@ -67,6 +70,9 @@ export class ChartDetailComponent implements OnInit {
       date: new Date()
     };
     this.toolService.SetReceiverData(this.recieverChat);
-    this.chatReciever = this.toolService.getReceiverData();
+    this.toolService
+      .getReceiverDataById(this.id)
+      .subscribe(data => {this.chatReciever = data;
+      this.msgForm.reset()});
   }
 }
